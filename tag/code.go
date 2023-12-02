@@ -40,7 +40,7 @@ const (
 	_
 	RecordDefineBitsJPEG3
 	RecordDefineBitsLossless2
-	_
+	RecordDefineEditText
 	_
 	RecordDefineSprite
 	_
