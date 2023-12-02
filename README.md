@@ -6,7 +6,7 @@ Compared to [kelvyne/swf](https://github.com/kelvyne/swf), it also decodes types
 
 ### Example
 
-```go
+```golang
 package example
 
 import (
