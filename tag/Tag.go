@@ -132,13 +132,15 @@ func (r *Record) Decode() (readTag Tag, err error) {
 		readTag = &DefineFont4{}
 	case RecordPlaceObject4:
 		readTag = &PlaceObject4{}
+	case RecordDoABC:
+		readTag = &DoABC{}
+	case RecordEnableTelemetry:
+		readTag = &EnableTelemetry{}
 
 	case RecordExportAssets:
 	case RecordImportAssets:
 	case RecordImportAssets2:
 	case RecordSymbolClass:
-	case RecordDoABC:
-		readTag = &DoABC{}
 
 	}
 

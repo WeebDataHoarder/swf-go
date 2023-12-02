@@ -96,6 +96,6 @@ const (
 	RecordDefineBitsJPEG4
 	RecordDefineFont4
 	_
-	_
+	RecordEnableTelemetry
 	RecordPlaceObject4
 )
