@@ -14,6 +14,7 @@ import (
 type Reader struct {
 	r      *bitio.Reader
 	header types.Header
+	closer func() error
 }
 
 func NewReader(reader io.Reader) (*Reader, error) {
@@ -39,6 +40,7 @@ func NewReader(reader io.Reader) (*Reader, error) {
 		if err != nil {
 			return nil, err
 		}
+		r.closer = zlibReader.Close
 		r.r = bitio.NewReader(zlibReader)
 	case types.SignatureCompressedLZMA:
 		if r.header.Version < 13 {
@@ -71,6 +73,13 @@ func NewReader(reader io.Reader) (*Reader, error) {
 	}
 
 	return r, nil
+}
+
+func (r *Reader) Close() error {
+	if r.closer != nil {
+		return r.closer()
+	}
+	return nil
 }
 
 func (r *Reader) Header() types.Header {

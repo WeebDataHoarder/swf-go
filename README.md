@@ -28,6 +28,7 @@ func main() {
     if err != nil {
         panic(err)
     }
+    defer reader.Close()
 
     for {
         t, err := reader.Tag()
