@@ -34,6 +34,9 @@ func (r *Record) DataLength(ctx types.ReaderContext) uint64 {
 	return uint64(r.TagCodeAndLength & 0x3f)
 }
 
+var ErrUnknownTag = errors.New("unknown tag")
+var ErrMismatchedTag = errors.New("mismatched tag and code")
+
 func (r *Record) Decode() (readTag Tag, err error) {
 	bitReader := bitio.NewReader(bytes.NewReader(r.Data))
 
@@ -151,7 +154,7 @@ func (r *Record) Decode() (readTag Tag, err error) {
 	}
 
 	if readTag == nil {
-		return nil, errors.New("could not decode tag")
+		return nil, ErrUnknownTag
 	}
 
 	err = types.ReadType(bitReader, types.ReaderContext{
@@ -161,7 +164,7 @@ func (r *Record) Decode() (readTag Tag, err error) {
 		return nil, err
 	}
 	if readTag.Code() != r.Code() {
-		return nil, errors.New("mismatched decoded tag code")
+		return nil, ErrMismatchedTag
 	}
 
 	return readTag, nil

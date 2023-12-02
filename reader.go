@@ -96,7 +96,5 @@ func (r *Reader) Tag() (readTag tag.Tag, err error) {
 		return nil, err
 	}
 
-	readTag, err = record.Decode()
-
-	return readTag, err
+	return record.Decode()
 }

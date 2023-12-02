@@ -32,6 +32,10 @@ func main() {
     for {
         t, err := reader.Tag()
         if err != nil {
+            if errors.Is(err, tag.ErrUnknownTag) {
+                //unknown tag, cannot decode
+                continue
+            }
             if errors.Is(err, io.EOF) {
                 //file is completely read
                 panic("EOF reached without End tag")
