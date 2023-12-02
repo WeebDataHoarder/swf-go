@@ -77,7 +77,7 @@ const (
 	RecordImportAssets2
 	_
 	RecordDefineFontAlignZones
-	_
+	RecordCSMTextSettings
 	RecordDefineFont3
 	RecordSymbolClass
 	RecordMetadata

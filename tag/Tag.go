@@ -138,6 +138,8 @@ func (r *Record) Decode() (readTag Tag, err error) {
 		readTag = &EnableTelemetry{}
 	case RecordDefineBinaryData:
 		readTag = &DefineBinaryData{}
+	case RecordCSMTextSettings:
+		readTag = &CSMTextSettings{}
 
 	case RecordExportAssets:
 	case RecordImportAssets:
