@@ -1,6 +1,7 @@
 package tag
 
 import (
+	"errors"
 	"git.gammaspectra.live/WeebDataHoarder/swf-go/types"
 )
 
@@ -28,13 +29,12 @@ func (t *DefineSprite) SWFRead(r types.DataReader, ctx types.ReaderContext) (err
 		}
 
 		readTag, err := record.Decode()
+		if errors.Is(err, ErrUnknownTag) {
+			//unknown tag, cannot decode
+			continue
+		}
 		if err != nil {
 			return err
-		}
-
-		if readTag == nil {
-			//not decoded
-			continue
 		}
 
 		t.ControlTags = append(t.ControlTags, readTag)
