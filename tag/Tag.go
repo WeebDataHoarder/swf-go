@@ -137,6 +137,8 @@ func (r *Record) Decode() (readTag Tag, err error) {
 	case RecordImportAssets:
 	case RecordImportAssets2:
 	case RecordSymbolClass:
+	case RecordDoABC:
+		readTag = &DoABC{}
 
 	}
 

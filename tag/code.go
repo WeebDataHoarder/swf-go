@@ -85,7 +85,7 @@ const (
 	_
 	_
 	_
-	_
+	RecordDoABC
 	RecordDefineShape4
 	RecordDefineMorphShape2
 	_
