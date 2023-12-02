@@ -90,7 +90,7 @@ const (
 	RecordDefineMorphShape2
 	_
 	RecordDefineSceneAndFrameLabelData
-	_
+	RecordDefineBinaryData
 	RecordDefineFontName
 	RecordStartSound2
 	RecordDefineBitsJPEG4

@@ -136,6 +136,8 @@ func (r *Record) Decode() (readTag Tag, err error) {
 		readTag = &DoABC{}
 	case RecordEnableTelemetry:
 		readTag = &EnableTelemetry{}
+	case RecordDefineBinaryData:
+		readTag = &DefineBinaryData{}
 
 	case RecordExportAssets:
 	case RecordImportAssets:
